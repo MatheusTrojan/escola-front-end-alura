@@ -39,7 +39,7 @@ nav a:hover {
 }
 
 .produtos {
-    width: 100%;
+    width: 940px;
     margin: 0 auto;
     padding: 50px 0;
 }
@@ -99,7 +99,7 @@ footer {
 }
 
 form {
-    margin: 40px 0;
+    margin: 40px 3em;
 }
 
 form label, form legend {
@@ -138,7 +138,7 @@ form label, form legend {
 }
 
 table {
-    margin: 20px 0 40px;
+    margin: 20px 0 40px 3em;
 }
 
 thead {
@@ -268,6 +268,11 @@ td, th {
 
     .lista-beneficios, .imagem-beneficios {
         width: 100%;
+    }
+
+    .produtos {
+        width: 100%;
+        margin: 0 auto;
     }
 
     .produtos li {
