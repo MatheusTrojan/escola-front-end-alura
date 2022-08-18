@@ -1,0 +1,39 @@
+.cabecalhoPrincipal .container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cabecalhoPrincipal-nav {
+    display: flex;
+}
+
+/* RODAPÉ A PARTIR DAQUI */
+.rodapePrincipal-patrocinadores .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rodapePrincipal-navMap-list {
+    display: flex;
+    /* flex-direction: column;
+    flex-wrap: wrap; */
+    flex-flow: column wrap;
+    height: 260px;
+}
+
+.rodapePrincipal-patrocinadores-list {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 5%;
+    width: 70%;
+}
+
+.rodapePrincipal-contatoForm {
+    width: 25%;
+}
+
+.rodapePrincipal-contatoForm-fieldset {
+    display: flex;
+}
