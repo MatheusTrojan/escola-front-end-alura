@@ -8,7 +8,18 @@
     display: flex;
 }
 
-/* RODAPÉ A PARTIR DAQUI */
+/* CONTEUDO PRINCIPAL */
+.conteudoPrincipal-cursos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.conteudoPrincipal-cursos-link {
+    width: 23%;
+    gap: 1%
+}
+
+/* RODAPÉ */
 .rodapePrincipal-patrocinadores .container {
     display: flex;
     justify-content: space-between;
@@ -37,3 +48,5 @@
 .rodapePrincipal-contatoForm-fieldset {
     display: flex;
 }
+
+/* PARTE MOBILE */
