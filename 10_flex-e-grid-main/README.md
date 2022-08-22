@@ -19,7 +19,7 @@ corpo: `#1D232A`
 
 cabeçalho: `#1D232A`
 
-cabeçalho mobile: `#15191C`
+cabeçalho mobile: ``
 
 menu lateral: `#15191C`
 
