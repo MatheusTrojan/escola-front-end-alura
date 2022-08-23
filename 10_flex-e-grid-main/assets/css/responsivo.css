@@ -1,0 +1,58 @@
+@media screen and (min-width: 1440px) {
+    body {
+        display: grid;
+        grid-template-columns: auto 1fr;
+    }
+
+    .cabecalho {
+        background-color: #1D232A;
+        box-sizing: border-box;
+        column-gap: 32px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        height: 80px;
+        padding: 16px 60px;
+    }
+
+    .cabecalho__menu{
+        display: none;
+    }
+
+    .cabecalho__logo{
+        display: none;
+    }
+
+    .cabecalho__perfil {
+        align-items: center;
+        border-right: 1px solid #95999C;
+        color: #95999C;
+        column-gap: 8px;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        justify-self: flex-end;
+        padding: 8px 32px;
+    }
+
+    .cabecalho__perfil::before {
+        background-image: url(../img/profile_2.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        content: "";
+        display: block;
+        height: 32px;
+        width: 32px;
+    }
+
+    .cabecalho__perfil::after {
+        content: "\e90d";
+        color: #FFFFFF;
+        font-size: 1.5rem;
+    }
+
+    .menu-lateral {
+        position: static;
+        width: 200px;
+    }
+}
+
