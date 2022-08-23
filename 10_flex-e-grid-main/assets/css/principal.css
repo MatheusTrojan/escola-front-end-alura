@@ -26,6 +26,10 @@
     background-color: #2C343A;
 }
 
+.cartao__imagem--desktop {
+    display: none;
+}
+
 .cartao--destaque {
     margin-bottom: 16px;
 }
@@ -97,4 +101,8 @@
 
 .cartao__botao--destaque::before {
     margin-right: 8px;
+}
+
+.cartao--recentes {
+    display: none;
 }
