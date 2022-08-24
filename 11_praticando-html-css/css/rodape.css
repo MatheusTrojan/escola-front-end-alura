@@ -14,6 +14,15 @@
     color: var(--branco-principal);
     text-decoration: none;
     margin-left: 1em;
+    transition: 0.3s ease-in-out;
+}
+
+.lista__link a:hover {
+    color: var(--botao-azul);
+}
+
+.lista__link a:active {
+    color: green;
 }
 
 .rodape__texto {

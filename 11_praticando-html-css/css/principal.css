@@ -33,6 +33,12 @@
     padding: 1em;
     margin-bottom: 1em;
     text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+.container__botao:hover {
+    background-color: var(--botao-azul-efeito);
+    color: var(--cor-de-fundo);
 }
 
 .botao__secundario {
