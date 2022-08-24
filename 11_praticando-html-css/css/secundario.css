@@ -7,6 +7,10 @@
     width: 80%;
 }
 
+.container__descricao {
+    padding: 2em;
+}
+
 .descricao__titulo {
     color: var(--branco-principal);
     font-size: 48px;
@@ -16,4 +20,9 @@
 
 .descricao__texto {
     color: var(--cinza-secundario);
+}
+
+.secundario__botao {
+    display: inline-block;
+    margin-top: 1em;
 }
