@@ -39,3 +39,20 @@
         top: 60%;
     }
 }
+
+@media screen and (min-width: 1728px) {
+    .carrossel__container {
+        align-items: center;
+        display: flex;
+        margin: 0 20vw 3em 20vw;
+    }
+
+    .swiper {
+        width: 80%;
+    }
+    
+    .swiper-pagination {
+        margin: 1em 0;
+    }
+
+}

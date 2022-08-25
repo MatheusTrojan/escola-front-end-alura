@@ -12,10 +12,6 @@
     margin-bottom: 0.5em;
 }
 
-.descricao {
-    line-height: 1.2em;
-}
-
 .descricao__estrelas {
     margin-bottom: 0.5em;
 }
@@ -62,9 +58,33 @@
     text-decoration: none;
 }
 
+.botoes__ancora:active {
+    background-color: var(--azul);
+}
+
 @media screen and (min-width: 1024px) {
     .card {
         width: 40%;
         margin: 2em auto;
     }
+}
+
+@media screen and (min-width: 1728px) {
+    .card {
+        width: 60%;
+        margin-left: 3em;
+    }
+
+    .descricao {
+        margin-right: 1em;
+    }
+    
+    .descricao__titulo {
+        font-size: 32px;
+    }
+
+    .descricao__texto {
+        font-size: 16px;
+    }
+
 }
