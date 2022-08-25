@@ -30,3 +30,27 @@
     background-clip: text;
     text-transform: uppercase;
 }
+
+@media screen and (min-width: 1024px) {
+    .opcoes__botao:checked ~ .lista-menu {
+        display: block;
+        width: auto;
+    }
+
+    .opcoes__botao {
+        display: none;
+    }
+
+    .lista-menu__titulo:hover, .lista-menu__item:hover {
+        padding: 1em;
+        background-color: var(--azul);
+    }
+
+    .lista-menu__link:hover {
+        background: var(--branco);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-transform: uppercase;
+    }
+}

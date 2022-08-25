@@ -4,15 +4,19 @@
 @import url("corpo/carrossel.css");
 @import url("corpo/card.css");
 @import url("corpo/topicos.css");
+@import url("contato-footer/contato.css");
+@import url("contato-footer/rodape.css");
 
 :root {
     --cor-de-fundo: #EBECEE;
     --branco: #FFFFFF;
+    --preto: #000000;
     --laranja: #EB9B00;
     --azul-degrade: linear-gradient(97.54deg, #002F52 35.49%, #326589 165.37%);
     --azul: #002F52;
 
-    --fonte-principal: 'Poppins';
+    --fonte-principal: "Poppins";
+    --fonte-secundaria: "Josefin Sans";
 }
 
 body {

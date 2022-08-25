@@ -26,11 +26,24 @@
 
 .banner__pesquisa::placeholder {
     color: var(--branco);
-    background: url(../img/Pesquisa.svg) no-repeat;
+    background: url(../../img/Pesquisa.svg) no-repeat;
     background-position: 1.5em;
     font-family: var(--fonte-principal);
     font-size: 14px;
     font-weight: 400;
     text-align: center;
-    padding-left: 2.5em;
+}
+
+@media screen and (min-width: 1024px) {
+    .banner__titulo {
+        font-size: 36px;
+    }
+
+    .banner__pesquisa {
+        width: 50%;
+    }
+
+    .banner__pesquisa::placeholder {
+        background-position: 9.5em;
+    }
 }
