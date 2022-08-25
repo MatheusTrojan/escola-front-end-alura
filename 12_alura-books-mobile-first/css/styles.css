@@ -3,6 +3,7 @@
 @import url("corpo/banner.css");
 @import url("corpo/carrossel.css");
 @import url("corpo/card.css");
+@import url("corpo/topicos.css");
 
 :root {
     --cor-de-fundo: #EBECEE;
