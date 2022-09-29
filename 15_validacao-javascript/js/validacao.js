@@ -18,7 +18,7 @@ function validaDataNascimento (input) {
         mensagem = "Você deve ser maior que 18 anos para ser cadastrar."
     }
 
-    input.setCustomValidity(mensagem)
+    input.setCustomValidity(mensagem) 
 }
 
 function maiorQue18 (data) {
