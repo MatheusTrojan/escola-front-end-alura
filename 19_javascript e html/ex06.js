@@ -53,5 +53,5 @@ function trocaBandeira () {
     mostraBrasil = !mostraBrasil
 }
 
-// setInterval(trocaBandeira, 1500)
+setInterval(trocaBandeira, 1500)
 
