@@ -13,5 +13,11 @@ tabelaPaciente.addEventListener("dblclick", function(event) {
 
     let alvoDoEvento = event.target;
     let paiDoAlvo = alvoDoEvento.parentNode;
-    paiDoAlvo.remove()
+
+    paiDoAlvo.classList.add("fadeOut");
+
+    setTimeout(function(){
+        paiDoAlvo.remove();
+    }, 750)
+    
 })
