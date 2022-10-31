@@ -13,3 +13,7 @@
 // comparação explícita >> operador ternário >> console.log(idade >= idadeMinima ? "pode beber" : "nao pode beber")
 //                                                              condição             if true          if false
 
+
+// template string >> substitui a concatenação utilizando várias vezes o simbolo de adição e variáveis, criando tudo na mesma frase com crase>>> `texto texto ${variavel} texto texto`
+
+
