@@ -3,7 +3,10 @@
 const listaClientes = () => {
         return fetch (`http://localhost:3000/profile`) // método global > por padrão, a fetch já faz o GET e devolve uma promise
         .then(resposta => { //após o fetch, basta retornar a resposta transformada em json
-            return resposta.json()
+            if (resposta.ok){
+                return resposta.json()
+            }
+            throw new Error("Não foi possível listar os clientes")    
         })
 
             // ANTES DE USAR FETCH, USAVA ASSIM
@@ -37,7 +40,10 @@ const criaCliente = (nome, email) => {
         })
     })
     .then( resposta => {
-        return resposta.body
+        if (resposta.ok){
+            return resposta.body
+        }
+        throw new Error("Não foi possível criar um cliente")  
     })
 }
 
@@ -45,10 +51,50 @@ const removeCliente = (id) => {
     return fetch (`http://localhost:3000/profile/${id}`, {
         method: "DELETE",
     })
+    .then( resposta => {
+        if (!resposta.ok) {
+            throw new Error("Não foi possível remover o cliente")  
+        }
+    })
 }
+
+const detalhaCliente = (id) => {
+    return fetch (`http://localhost:3000/profile/${id}`)
+    .then(resposta => { 
+        if(resposta.ok){
+            return resposta.json()
+        }
+        throw new Error("Não foi possível detalhar o cliente")  
+    })
+}
+
+const atualizaCliente = (id, nome, email) => {
+    return fetch (`http://localhost:3000/profile/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-type" : "application/json"
+        },
+        body: JSON.stringify({
+            nome: nome,
+            email: email
+        })
+    })
+    .then( resposta => {
+        if(resposta.ok){
+            return resposta.json()
+        }
+        throw new Error("Não foi possível atualizar o cliente") 
+    })
+}
+
+
+
+
 //quando for acessar o listaCliente lá na listaCliente-controller temos que usar a notação de ponto >>> clienteService.listaCliente (isso já vai me falar de onde ta vindo a listaCliente)
 export const clienteService = {
     listaClientes,
     criaCliente,
-    removeCliente
+    removeCliente,
+    detalhaCliente,
+    atualizaCliente
 }
