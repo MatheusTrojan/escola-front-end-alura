@@ -6,7 +6,7 @@ class Negociacao {
         this._data = new Date(data.getTime());
         this._quantidade = quantidade;
         this._valor = valor;
-        Object.freeze(this) // congela o objeto, o tornando imutável
+        Object.freeze(this) // congela o objeto, o tornando imutável (mas é uma proteção rasa, pode ser burlada, por isso fiz alterações no get data)
     }
 
     //metodos "acessadores" com o get >> apenas a classe acessa os dados
