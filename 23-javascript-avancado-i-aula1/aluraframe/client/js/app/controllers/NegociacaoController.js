@@ -1,18 +1,31 @@
 class negociacaoController {
 
-    adiciona(event) {
-        event.preventDefault()
-        
+    constructor() {
+
         let $ = document.querySelector.bind(document)
 
-        let inputData = $("#data");
-        let inputQuantidade = $("#quantidade");
-        let inputValor = $("#valor");
-
-        console.log(inputData.value)
-        console.log(inputQuantidade.value)
-        console.log(inputValor.value)
+        this._inputData = $("#data");
+        this._inputQuantidade = $("#quantidade");
+        this._inputValor = $("#valor");
 
     }
 
+    adiciona(event) {
+        event.preventDefault()
+
+        // console.log(typeof(this._inputData.value)) << para descobrir o tipo da data que estamos recebendo
+
+        let data = new Date(this._inputData.value.replace(/-/g, ","));
+        console.log(data)
+        
+        // let negociacao = new Negociacao(
+        //     this._inputData.value,
+        //     this._inputQuantidade.value,
+        //     this._inputValor.value
+        // );
+
+        // console.log(negociacao)
+
+        // adicionar a negociação em um lista
+    }
 }
