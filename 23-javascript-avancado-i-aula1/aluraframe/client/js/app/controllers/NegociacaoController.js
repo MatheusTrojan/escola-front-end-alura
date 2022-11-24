@@ -1,36 +1,38 @@
 class negociacaoController {
 
     constructor() {
-
+        // quando jogamos o querySelector para uma variavel, ele perde o contexto do "document", o THIS não apontaria mais para o "document"... então usamos o BIND para o $ fazer a referência ao "document" novamente (parecido com Jquery)
         let $ = document.querySelector.bind(document)
 
         this._inputData = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
+        this._listaNegociacoes = new ListaNegociacoes();
 
     }
 
     adiciona(event) {
+
         event.preventDefault()
+        this._listaNegociacoes.adiciona(this._criaNegociacao());
+        this._limpaFormulario()
+        console.log(this._listaNegociacoes.negociacoes)
+    }
 
-        // console.log(typeof(this._inputData.value)) << para descobrir o tipo da data que estamos recebendo
-        // esses split e map para mostrar a data no formato desejado (subtraindo 1 indice do mês para dar certo)
-        let dataArrumada = new Date(...
-            this._inputData.value
-                .split("-")
-                .map((item, indice) => indice == 1 ? item - 1 : item)
-        );
+    _criaNegociacao() {
 
-        // console.log(data)
-        
-        let negociacao = new Negociacao(
-            dataArrumada,
+        return new Negociacao(
+            DateHelper.textoParaData(this._inputData.value),
             this._inputQuantidade.value,
             this._inputValor.value
         );
+    }
 
-        console.log(negociacao)
+    _limpaFormulario() {
 
-        // adicionar a negociação em um lista
+        this._inputData.value = "";
+        this._inputQuantidade.value = 1;
+        this._inputValor.value = 0.0;
+        this._inputData.focus();
     }
 }
