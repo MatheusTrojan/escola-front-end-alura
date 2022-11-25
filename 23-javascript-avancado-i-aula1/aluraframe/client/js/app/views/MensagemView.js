@@ -1,17 +1,11 @@
-class MensagemView {
+class MensagemView extends View { //extends quer dizer que herda outra classe
 
     constructor(elemento) {
-
-        this._elemento = elemento;
+        super(elemento); // se recebemos um parâmetro no constructor, temos que chamar o constructor da classe pai passando o dado que a classe pai depende
     }
 
-    _template(model) {
+    template(model) {
 
         return model.texto ? `<p class='alert alert-info'>${model.texto}</p>` : "<p></p>"
-    }
-
-    update(model) {
-
-        this._elemento.innerHTML = this._template(model)
     }
 }
