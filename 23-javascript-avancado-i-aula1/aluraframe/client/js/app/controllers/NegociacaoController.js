@@ -27,9 +27,18 @@ class negociacaoController {
         this._negociacoesView.update(this._listaNegociacoes);
 
         this._mensagem.texto = "Negociação adicionada com sucesso!"
-        this._mensagemView.update(this._mensagem)
+        this._mensagemView.update(this._mensagem);
 
         this._limpaFormulario()
+    }
+
+    apaga() {
+
+        this._listaNegociacoes.esvazia();
+        this._negociacoesView.update(this._listaNegociacoes);
+
+        this._mensagem.texto = "Lista de negociações apagada com sucesso!"
+        this._mensagemView.update(this._mensagem);
     }
 
     _criaNegociacao() {
