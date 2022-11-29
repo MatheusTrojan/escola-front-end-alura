@@ -56,28 +56,9 @@
     <script src="js/app/views/NegociacoesView.js"></script>
     <script src="js/app/models/Mensagem.js"></script>
     <script src="js/app/views/MensagemView.js"></script>
+    <script src="js/app/services/ProxyFactory.js"></script>
     <script>
         let negociacaoController = new NegociacaoController();
     </script>    
-
-    <script>
-        let negociacao = new Proxy(new Negociacao(new Date(), 1, 100), {
-
-            get: function(target, prop, receiver) {
-                console.log(`A propriedade "${prop}" foi interceptada`)
-                return Reflect.get(target, prop, receiver)
-            }
-            //get vai ser sempre chamado toda vez que eu tentar ler qualquer propriedade do objeto
-            // quando chamado, me da o TARGET (referencia ao objeto original que esta sendo encapsulado pelo proxy);
-            // PROP -> a propriedade que está sendo acessada
-            // RECEIVER -> uma referencia ao proprio proxy
-
-            // Quando executamos a TRAP(ARMADILHA), temos que dar o valor retornado após ter interceptado a propriedade de leitura
-        })
-
-        console.log(negociacao.quantidade);
-        console.log(negociacao.valor);
-        
-    </script>
 </body>
 </html>

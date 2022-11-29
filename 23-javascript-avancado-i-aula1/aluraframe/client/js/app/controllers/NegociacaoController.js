@@ -7,9 +7,14 @@ class NegociacaoController {
         this._inputData = $('#data');
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
-        
+
+        this._listaNegociacoes = ProxyFactory.create(
+            new ListaNegociacoes(),
+            ["adiciona", "esvazia"],
+            (model) => this._negociacoesView.update(model))
+
         // this._listaNegociacoes = new ListaNegociacoes(model => 
-        //     this._negociacoesView.update(model));
+        //     this._negociacoesView.update(model)); SUBSTITUIDO PELO PROXY
         
         this._negociacoesView = new NegociacoesView($('#negociacoesView'));
         this._negociacoesView.update(this._listaNegociacoes);
