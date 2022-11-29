@@ -18,4 +18,4 @@ class Mensagem {
 
 let mensagem = new Mensagem("teste")
 
-console.log(mensagem.texto)
+// console.log(mensagem.texto)
