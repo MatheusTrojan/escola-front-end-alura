@@ -2,33 +2,21 @@ class NegociacaoController {
     
     constructor() {
         
-                // quando jogamos o querySelector para uma variavel, ele perde o contexto do "document", o THIS não apontaria mais para o "document"... então usamos o BIND para o $ fazer a referência ao "document" novamente (parecido com Jquery)
+        // quando jogamos o querySelector para uma variavel, ele perde o contexto do "document", o THIS não apontaria mais para o "document"... então usamos o BIND para o $ fazer a referência ao "document" novamente (parecido com Jquery)
         let $ = document.querySelector.bind(document);
         this._inputData = $('#data');
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
 
-        this._listaNegociacoes = ProxyFactory.create(
+        this._listaNegociacoes = new Bind(
             new ListaNegociacoes(),
-            ["adiciona", "esvazia"],
-            (model) => this._negociacoesView.update(model)
-        )
-
-        // this._listaNegociacoes = new ListaNegociacoes(model => 
-        //     this._negociacoesView.update(model)); SUBSTITUIDO PELO PROXY
+            new NegociacoesView($('#negociacoesView')),
+            "adiciona", "esvazia")
         
-        this._negociacoesView = new NegociacoesView($('#negociacoesView'));
-        this._negociacoesView.update(this._listaNegociacoes);
-        
-        this._mensagem = ProxyFactory.create(
+        this._mensagem = new Bind(
             new Mensagem(),
-            ["texto"], 
-            (model) => this._mensagemView.update(model)
-        )
-
-        this._mensagemView = new MensagemView($('#mensagemView'));
-        this._mensagemView.update(this._mensagem);
-        
+            new MensagemView($('#mensagemView')),
+            "texto")
     }
     
     adiciona(event) {
