@@ -51,7 +51,7 @@ class NegociacaoService {
 
                     } else {
                         console.log(xhr.responseText);
-                        reject("Não foi possível obter as negociações da semana passada!");
+                        reject("Não foi possível obter as negociações da semana anterior!");
                     }
                 }
             };
