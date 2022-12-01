@@ -1,52 +1,73 @@
-let stores = ["negociacoes"];
-let version = 4;
-let dbName = "aluraframe"
+var ConnectionFactory = (function () {
 
-let connection = null;
+    const stores = ["negociacoes"];
+    const version = 4;
+    const dbName = "aluraframe"
 
-class ConnectionFactory {
+    var connection = null;
 
-    constructor() {
+    var close = null
 
-        throw new Error ("Não é possível criar instâncias de ConnectionFactory!");
-    }
+    return class ConnectionFactory {
 
-    static getConnection() {
+        constructor() {
 
-        return new Promise((resolve, reject) => {
+            throw new Error ("Não é possível criar instâncias de ConnectionFactory!");
+        }
 
-            let openRequest = window.indexedDB.open(dbName, version);
+        static getConnection() {
 
-            openRequest.onupgradeneeded = e => {
+            return new Promise((resolve, reject) => {
 
-                ConnectionFactory._createStores(e.target.result);
-            };
+                let openRequest = window.indexedDB.open(dbName, version);
 
-            openRequest.onsuccess = e => {
+                openRequest.onupgradeneeded = e => {
 
-                if(!connection) connection = e.target.result
-                resolve(connection);
-            };
+                    ConnectionFactory._createStores(e.target.result);
+                };
 
-            openRequest.onerror = e => {
+                openRequest.onsuccess = e => {
 
-                console.log(e.target.error);
+                    if(!connection) {
+                        connection = e.target.result
 
-                reject(e.target.error.name);
-            };
-        });
-    }
+                        close = connection.close;
 
-    static _createStores(connection) {
+                        connection.close = function() {
+                            throw new Error ("Você não pode fechar diretamente a conexão!");
+                        };
+                    }
+                    resolve(connection);
+                };
 
-        stores.forEach(store => {
+                openRequest.onerror = e => {
 
-            if (connection.objectStoreNames.contains(store)) {
-                connection.deleteObjectStore(store)
+                    console.log(e.target.error);
+
+                    reject(e.target.error.name);
+                };
+            });
+        }
+
+        static _createStores(connection) {
+
+            stores.forEach(store => {
+
+                if (connection.objectStoreNames.contains(store)) {
+                    connection.deleteObjectStore(store)
+                }
+                connection.createObjectStore(store, { autoIncrement: true })                
+            })
+        }
+
+        static closeConnection() {
+            //para o usuário nao conseguir invocar o metodo connection.close diretamente, criamos a variavel close que recebeu os mesmoo parametros do metodo connectiom.close, e em seguida delegamos a ele uma nova função que dispara um erro informando que não é possivel fechar diretamente a conexão. Após isso, criamos o método estático que de fato fecha a conexão ao invocar a variável close linkada ao connection.close original
+            if (connection) {
+                Reflect.apply(close, connection, [])
+                connection = null;
             }
-            connection.createObjectStore(store, { autoIncrement: true })                
-        })
-    }
-};
+        }
 
-ConnectionFactory.getConnection();
+    };
+})();
+//envolvendo toda function entre parenteses e adicionando os outros 2 parensetes ao final, criamos uma funcão auto invocada
