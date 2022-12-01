@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aprendendo IndexedDB</title>
+    </head>
+    <body>
+        <script src="js/app/models/Negociacao.js"></script>
+        <script>
+
+            let connection;
+
+            let openRequest = window.indexedDB.open("aluraframe", 3);
+
+            openRequest.onupgradeneeded = e => {
+                console.log("Cria ou altera um banco já existente");
+
+                let minhaConnection = e.target.result;
+
+                if (minhaConnection.objectStoreNames.contains("negociacoes")) {
+                    minhaConnection.deleteObjectStore("negociacoes");
+                }
+
+                minhaConnection.createObjectStore("negociacoes", { autoIncrement: true });
+            };
+
+            openRequest.onsuccess = e => {
+                console.log("Conexão obtida com sucesso");
+
+                connection = e.target.result;
+            };
+
+            openRequest.onerror = e => {
+                console.log(e.target.error);
+            };
+
+            function adiciona() {
+                // toda vez que quero gravar dentro de um objectStore, preciso pedir uma transação e dizer qual é o tipo dela (1º parametro nome da objectStore e o 2º é o tipo)
+                let transaction = connection.transaction(["negociacoes"], "readwrite");
+
+                // dessa transação, tenho acesso à objectStore
+                let store = transaction.objectStore("negociacoes");
+
+                // desse objectStore tenho o método add que permite adicionar um objeto dentro dele
+                let negociacao = new Negociacao(new Date(), 1, 200);
+
+                // o metodo add devolve uma requisição(request) para poder adicionar, pode dar certo ou errado, por isso dentro dele tem o "onsucess" e "onerror"
+                let request = store.add(negociacao)
+
+                request.onsuccess = e => {
+                    console.log("Negociação incluída com sucesso.")
+                }
+
+                request.onerror = e => {
+                    console.log("Não foi possível incluir a negociação.")
+                }
+            }
+
+            function listaTodos() {
+                let transaction = connection.transaction(["negociacoes"], "readwrite");
+
+                let store = transaction.objectStore("negociacoes");
+
+                let cursor = store.openCursor();
+
+                let negociacoes = []
+
+                // é chamado toda vez que criamos um cursor
+                cursor.onsuccess = e => {
+
+                    // quando é chamado, ele me da um PONTEIRO chamado de atual, que aponta para o primeiro objeto dentro da objectStore
+                    let atual = e.target.result;
+
+                    // se há um ponteiro válido, desse ponteiro pegamos os dados lá de dentro
+                    // quando gravamos um objectStore, ele é gravado em formato JSON, então não tem métodos, funções, e sim apenas as propriedades
+                    if (atual) {
+                        let dado = atual.value
+
+                        // logo, antes de adicionar na lista de negociações, criamos uma nova instancia de negociação pegando os dados do indexedDB
+                        negociacoes.push(new Negociacao(dado._data, dado._quantidade, dado._valor))
+
+                        // passa para o próximo ponteiro até não ter mais dados para interagir, atual vai ser nulo, caindo no ELSE e imprimindo as negociações no console
+                        atual.continue();
+                    } else {
+
+                        console.log(negociacoes)
+                    }
+                };
+
+                cursor.onerror = e => {
+                    console.log(e.target.error.name)
+                };
+            }
+        </script>
+    </body>
+</html>
