@@ -60,9 +60,13 @@ class NegociacaoController {
 
         // TERCEIRA REFATORAÇÃO
         .obterNegociacoes()
-        .then(negociacoes => {
-          negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
-          this._mensagem.texto = 'Negociações do período importadas com sucesso';
+        .then(negociacoes => 
+            negociacoes.filter(negociacao => 
+                this._listaNegociacoes.negociacoes.indexOf(negociacao) == -1)
+        )
+        .then(negociacoes => {negociacoes.forEach(negociacao => 
+            this._listaNegociacoes.adiciona(negociacao));
+            this._mensagem.texto = 'Negociações do período importadas com sucesso';
         })
         .catch(error => this._mensagem.texto = error);  
     }
