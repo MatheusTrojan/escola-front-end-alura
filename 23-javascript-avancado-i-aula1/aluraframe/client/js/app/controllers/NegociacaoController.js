@@ -66,7 +66,7 @@ class NegociacaoController {
         )
         .then(negociacoes => {negociacoes.forEach(negociacao => 
             this._listaNegociacoes.adiciona(negociacao));
-            this._mensagem.texto = 'Negociações do período importadas com sucesso';
+            this._mensagem.texto = 'Negociações do período importadas com sucesso!';
         })
         .catch(error => this._mensagem.texto = error);  
     }
