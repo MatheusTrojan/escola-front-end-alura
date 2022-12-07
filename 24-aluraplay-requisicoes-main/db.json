@@ -57,11 +57,18 @@
       "imagem": "https://github.com/MonicaHillman/aluraplay-requisicoes/blob/main/img/logo.png?raw=true"
     },
     {
+      "id": 9,
       "titulo": "[Casa do Código] Live de lançamento: Navegando no Universo da Programação",
       "descricao": "1 mil visualizações",
       "url": "https://www.youtube.com/embed/z43rcfjXOxU",
-      "imagem": "https://purr.objects-us-east-1.dream.io/i/OoNx6.jpg",
-      "id": 9
+      "imagem": "https://purr.objects-us-east-1.dream.io/i/OoNx6.jpg"
+    },
+    {
+      "id": 10,
+      "titulo": "4 mitos sobre programação #HipstersPontoTube",
+      "descricao": "338 mil visualizações",
+      "url": "https://www.youtube.com/embed/yj0FR_gm0sM",
+      "imagem": "https://i.ytimg.com/an_webp/yj0FR_gm0sM/mqdefault_6s.webp?du=3000&sqp=COWXw5wG&rs=AOn4CLB04mAfIrg6kUlYg3RIWq1ycVPl2g"
     }
   ]
 }
