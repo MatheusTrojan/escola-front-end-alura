@@ -1,4 +1,4 @@
-export function inspect() {
+export function Inspect() {
     return function(
         target: any,
         propertyKey: string,

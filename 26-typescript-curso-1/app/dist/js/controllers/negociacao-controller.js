@@ -5,13 +5,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { domInjector } from "../decorators/dom-injector.js";
-import { inspect } from "../decorators/inpect.js";
+import { Inspect } from "../decorators/inpect.js";
 import { logarTempoExecucao } from "../decorators/logar-tempo-execucao.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { negociacoesService } from "../services/negociacoes-service.js";
-import { imprimir } from "../utils/imprimir.js";
+import { Imprimir } from "../utils/imprimir.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 export class NegociacaoController {
@@ -30,13 +30,20 @@ export class NegociacaoController {
         }
         ;
         this.negociacoes.adiciona(negociacao);
-        imprimir(negociacao, this.negociacoes);
+        Imprimir(negociacao, this.negociacoes);
         this.limparFormulario();
         this.atualizaView();
     }
     importaDados() {
         this.negociacoesService
             .obterNegociacoesDoDia()
+            .then(negociacoesDeHoje => {
+            return negociacoesDeHoje.filter(negociacaoDeHoje => {
+                return !this.negociacoes
+                    .lista()
+                    .some(negociacao => negociacao.ehIgual(negociacaoDeHoje));
+            });
+        })
             .then(negociacoesDeHoje => {
             for (let negociacao of negociacoesDeHoje) {
                 this.negociacoes.adiciona(negociacao);
@@ -69,6 +76,6 @@ __decorate([
     domInjector("#valor")
 ], NegociacaoController.prototype, "inputValor", void 0);
 __decorate([
-    inspect(),
+    Inspect(),
     logarTempoExecucao()
 ], NegociacaoController.prototype, "adiciona", null);

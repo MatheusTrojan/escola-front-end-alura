@@ -1,6 +1,6 @@
-import { imprimivel } from "./imprimivel.js";
+import { Imprimivel } from "./imprimivel.js";
 
-export function imprimir(...objetos: imprimivel[]) {
+export function Imprimir(...objetos: Imprimivel[]) {
     for (let objeto of objetos) {
         console.log(objeto.paraTexto());
     }

@@ -1,4 +1,4 @@
-import { inspect } from "../decorators/inpect.js";
+import { Inspect } from "../decorators/inpect.js";
 import { logarTempoExecucao } from "../decorators/logar-tempo-execucao.js";
 
 export abstract class View<T> {
