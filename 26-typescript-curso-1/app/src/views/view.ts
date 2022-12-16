@@ -16,8 +16,8 @@ export abstract class View<T> {
 
     protected abstract template(model: T): string;
 
-    @logarTempoExecucao(true)
-    @inspect()
+    // @logarTempoExecucao(true)
+    // @inspect()
     public update(model: T): void {
 
         let template = this.template(model);
