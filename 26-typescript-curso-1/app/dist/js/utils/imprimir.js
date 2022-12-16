@@ -3,3 +3,4 @@ export function Imprimir(...objetos) {
         console.log(objeto.paraTexto());
     }
 }
+//# sourceMappingURL=imprimir.js.map
