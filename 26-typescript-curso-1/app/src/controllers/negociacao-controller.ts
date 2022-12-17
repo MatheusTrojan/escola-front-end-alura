@@ -58,6 +58,7 @@ export class NegociacaoController {
                     this.negociacoes.adiciona(negociacao);
                 }
                 this.negociacoesView.update(this.negociacoes);
+                this.mensagemView.update("Negociações importadas com sucesso!");
             })
     }
 
